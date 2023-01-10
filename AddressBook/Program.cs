@@ -1,23 +1,29 @@
-﻿namespace AddressBook
+﻿using static System.Console;
+namespace AddressBook
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("#------Welcome to Address Book Program------#");
-            Console.ResetColor();
+            ForegroundColor = ConsoleColor.Yellow;
+            WriteLine("#------Welcome to Address Book Program------#");
+            ResetColor();
 
             AddressBookMain book = new AddressBookMain();
-            bool addcontact = true;            
-            while (addcontact)
+            bool option = false;            
+            while (!option)
             {
-                book.CreateContact();
-                Console.WriteLine("Do you want to add more contact?(Y/N) :");
-                string ans = Console.ReadLine();
-                if(ans =="N" || ans == "n") { addcontact = false; }
+                WriteLine("1.Create Contact\n2.EditContact\n3.DisplayContact");
+                int choice = Convert.ToInt32(ReadLine());
+                switch (choice)
+                {
+                    case 1: book.CreateContact(); break;
+                    case 2: if (book.NumberOfContact > 0) { book.EditContact(); } else { WriteLine("Add Atleast One Contact"); } break;
+                    case 3: if (book.NumberOfContact > 0) { book.DisplayContact(); } else { WriteLine("There are no any contact"); } break;
+                }
+                
             }
-            book.DisplayContact();
+            
         }
     }
 }

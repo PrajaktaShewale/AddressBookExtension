@@ -6,6 +6,7 @@ namespace AddressBook
     public class AddressBookMain
     {
         public List<Contact> Contacts = new List<Contact>();
+        public int NumberOfContact { get; set; }
 
         public void CreateContact()
         {
@@ -21,20 +22,24 @@ namespace AddressBook
 
             Contact contact = new Contact(Fname, Lname, address, city, state, zip, phonenumber, email);
             Contacts.Add(contact);
+            NumberOfContact++;
+            DisplayContact();
         }
-
         public void DisplayContact()
         {
-            foreach(Contact contact in Contacts)
+            foreach(var contact in Contacts)
             {
-                WriteLine("Name : {0} {1}",contact.FirstName,contact.LastName);
-                WriteLine("Address : {0} {1} {2} {3} ", contact.Address, contact.City, contact.State, contact.ZipCode);
-                WriteLine("Phone Number : {0}", contact.PhoneNumber);
-                WriteLine("Email : {0}", contact.Email);
-                WriteLine("*--------------********-----------*");
+                contact.Display();
             }
-            
-           
+            WriteLine("---------------------------------");
+        }
+        public void EditContact()
+        {
+            WriteLine("Enter a FirstName to Edit the Contact");string firstname =ReadLine();
+            foreach(var contact in Contacts)
+            {
+                if(contact.FirstName == firstname) { contact.Edit(); }
+            }
         }
     }
 }
