@@ -17,7 +17,7 @@ namespace AddressBook
         {
             this.FirstName = FirstName;
             this.LastName = LastName;
-                this.Address = Address;
+            this.Address = Address;
             this.City = City;
             this.State = State;
             this.ZipCode = ZipCode;
@@ -40,17 +40,17 @@ namespace AddressBook
                 case 7: WriteLine("New PhoneNUmber :"); PhoneNumber = Convert.ToInt64(ReadLine()); break;
                 case 8: WriteLine("New Email :"); Email = ReadLine(); break;
                 default:
-                    break;
+                break;
             }
         }
         public void Display()
         {
-            ForegroundColor = ConsoleColor.Magenta;     
+                ForegroundColor = ConsoleColor.Magenta;     
                 WriteLine("Name : {0} {1}",FirstName, LastName);
                 WriteLine("Address : {0} {1} {2} {3} ", Address, City, State, ZipCode);
                 WriteLine("Phone Number : {0}", PhoneNumber);
                 WriteLine("Email : {0}", Email);
-            ResetColor();
+                ResetColor();
                 WriteLine("*--------------********-----------*");
         }
     }
