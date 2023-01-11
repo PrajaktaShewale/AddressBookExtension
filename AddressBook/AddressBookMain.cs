@@ -41,5 +41,28 @@ namespace AddressBook
                 if(contact.FirstName == firstname) { contact.Edit(); }
             }
         }
+        public void DeleteContact()
+        {
+            WriteLine("Enter a firstName or LastName of person to Delete from address book");string name =ReadLine();
+            
+            foreach(Contact contact in Contacts)
+            {
+                if (contact.FirstName==name || contact.LastName==name) 
+                { Contacts.Remove(contact); 
+                    WriteLine("Contact Deleted Successfully");
+                    WriteLine("******************************");
+                    this.NumberOfContact--;
+                    break;
+
+                }
+                else
+                {
+                    WriteLine("Name Does not exist");
+                    break;
+                }
+            }
+
+
+        }
     }
 }
