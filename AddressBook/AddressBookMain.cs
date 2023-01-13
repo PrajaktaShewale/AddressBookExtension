@@ -5,6 +5,7 @@ namespace AddressBook
 {
     public class AddressBookMain
     {
+        public string Name { get; set; }
         public List<Contact> Contacts = new List<Contact>();
         public int NumberOfContact { get; set; }
 
@@ -29,6 +30,7 @@ namespace AddressBook
         {
             foreach(var contact in Contacts)
             {
+                WriteLine(Contacts.Count);
                 contact.Display();
             }
             WriteLine("---------------------------------");
@@ -53,7 +55,6 @@ namespace AddressBook
                     WriteLine("******************************");
                     this.NumberOfContact--;
                     break;
-
                 }
                 else
                 {
@@ -63,8 +64,6 @@ namespace AddressBook
                     break;
                 }
             }
-
-
         }
     }
 }
